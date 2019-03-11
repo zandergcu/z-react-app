@@ -12,15 +12,14 @@ class App extends Component {
       <Router>
         <div className="container">
           <h2>Zander React App</h2>
-          <a href="/">Cake List</a><br/>
-          <a href="/view/1">View Cake</a><br/>
-          <a href="/review">Review Cake</a>
+          <Link to="/">Cake List</Link><br/>
+          <Link to="/view/1">View Cake</Link><br/>
+          <Link to="/review">Review Cake</Link>
           <Route path="/" exact component={CakeList} />
           <Route path="/view/:id" exact component={ViewCake} />
           <Route path="/review" exact component={ReviewCake} />
         </div>
       </Router>
-
     );
   }
 }
