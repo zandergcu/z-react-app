@@ -10,11 +10,30 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div className="container-fluid">
+
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <Link to="/" className="navbar-brand">
+              <img src="/img/cake.svg" width="30" height="30" className="d-inline-block align-top" alt="Cake App"/>
+              Cake App
+            </Link>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                <li className="nav-item active">
+                  <Link to="/" className="nav-link">Home</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/review" className="nav-link">Review Cakes</Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
           <h2>Zander React App</h2>
-          <Link to="/">Cake List</Link><br/>
-          <Link to="/view/1">View Cake</Link><br/>
-          <Link to="/review">Review Cake</Link>
+
           <Route path="/" exact component={CakeList} />
           <Route path="/view/:id" exact component={ViewCake} />
           <Route path="/review" exact component={ReviewCake} />
