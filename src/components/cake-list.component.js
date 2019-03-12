@@ -6,6 +6,12 @@ export default class CakeList extends Component {
 
     super(props);
 
+    this.onChangeCakeName = this.onChangeCakeName.bind(this);
+    this.onChangeCakeComment = this.onChangeCakeComment.bind(this);
+    this.onChangeCakeImageUrl = this.onChangeCakeImageUrl.bind(this);
+    this.onChangeCakeYumFactor = this.onChangeCakeyYumFactor.bind(this);
+    this.onSubmitAddCake = this.onSubmitAddCake.bind(this);
+
     this.state = {
       cake_id: '',
       cake_name: '',
@@ -43,6 +49,13 @@ export default class CakeList extends Component {
   onSubmitAddCake(e) {
     // Prevent page reload
     e.preventDefault();
+
+    console.log(`Form submitted:`);
+    console.log(`Cake Name: ${this.state.cake_name}`);
+    console.log(`Cake Comment: ${this.state.cake_comment}`);
+    console.log(`Cake Image Url: ${this.state.cake_imageUrl}`);
+    console.log(`Cake Yum Factor: ${this.state.cake_yumFactor}`);
+
     // Reset state after cake added
     this.setState({
       cake_id: '',
@@ -58,6 +71,22 @@ export default class CakeList extends Component {
     return (
       <div>
         <p>Cake List Component</p>
+        <div className="sidePanelContainer">
+
+          <div className="sidePanelButton">
+            <label>Add</label>
+          </div>
+
+          <div className="sidePanelContent">
+            <form onSubmit="this.onSubmitAddCake">
+              <div className="form-group">
+                <label>1:</label>
+                <input type="text" placeholder="1"/>
+              </div>
+            </form>
+          </div>
+
+        </div>
       </div>
     )
   }
