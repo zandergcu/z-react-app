@@ -10,16 +10,17 @@ $icon_color: #353535;
 // Font weights
 $font_weight--light: 300;
 $font_weight--regular: 400;
+$font_weight--bold: 600;
 
 // Fonts
 $base_font--family: 'Open Sans', sans-serif;
 $base_font--weight: $font_weight--regular;
-$base_font--size: 12px;
+$base_font--size: 14px;
 $base_font--lineheight: 1.4;
 
 // Font sizes
-$font_size--small: 13px;
-$font-size--medium: 16px;
+$font_size--small: 16px;
+$font-size--medium: 18px;
 $font-size--large: 22px;
 
 // Mixins
@@ -86,13 +87,6 @@ body{
   background-color: $body_background;
 }
 
-// Useful classes
-.content{
-  max-width:950px;
-  margin:0 auto;
-  position:relative;
-}
-
 .flex-center{
   @include flex-center;
 }
@@ -101,10 +95,7 @@ h1, h2, h3, p{
   color: $base_color--black;
   text-align:center;
   font-family: $base_font--family;
-  font-weight: 300;
-}
-h1,h2{
-  letter-spacing: 5px;
+  font-weight: $font_weight--light;
 }
 h1{
   font-size:$font-size--large;
@@ -119,7 +110,6 @@ h2{
 h3{
   font-size:$font-size--medium;
   padding-bottom:5px;
-  letter-spacing: 2.75px;
 }
 p{
   font-size:$font-size--small;

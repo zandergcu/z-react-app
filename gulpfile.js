@@ -1,7 +1,6 @@
 const { src, dest, parallel, watch } = require('gulp');
 const sass = require('gulp-sass');
 const minifyCSS = require('gulp-csso');
-const concat = require('gulp-concat');
 
 const watcher = watch(['sass/**/*.scss']);
 
@@ -19,15 +18,12 @@ function css() {
   return src('sass/main.scss')
     .pipe(sass())
     .pipe(minifyCSS())
-    .pipe(dest('public/css'))
+    .pipe(dest('src/App.css'))
 }
 
-function js() {
-  return src(['js/jquery.min.js', 'js/popper.min.js', 'js/bootstrap.min.js', 'js/scripts.js'], { sourcemaps: true })
-    .pipe(concat('app.min.js'))
-    .pipe(dest('public/js', { sourcemaps: true }))
-}
-
-exports.js = js;
 exports.css = css;
-exports.default = parallel(css, js);
+exports.default = parallel(css);
+
+//- RUN NPM INSTALL GULP SAVE
+//- POSSIBLY NEED TO RUN YARN INSTALL AGAIN THEN
+//- HOPEFULLY THIS LETS SCSS WORK AND DEPLOYS FINE
