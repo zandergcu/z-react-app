@@ -18,7 +18,7 @@ function css() {
   return src('sass/main.scss')
     .pipe(sass())
     .pipe(minifyCSS())
-    .pipe(dest('src/App.css'))
+    .pipe(dest('src/css'))
 }
 
 exports.css = css;

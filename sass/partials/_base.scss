@@ -4,7 +4,7 @@
 $base_color--white: #ffffff;
 $base_color--black: #353535;
 $body_background: #f1f1f1;
-$content_background--dark: #e0e0e0;
+$content_background--dark: #d6d6d6;
 $icon_color: #353535;
 
 // Font weights
@@ -114,4 +114,8 @@ h3{
 p{
   font-size:$font-size--small;
   line-height:1.6;
+}
+
+.no-pad{
+  padding:0;
 }

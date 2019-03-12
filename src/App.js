@@ -4,13 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import CakeList from "./components/cake-list.component";
 import ViewCake from "./components/view-cake.component";
 import ReviewCake from "./components/review-cake.component";
-import './App.css';
+import './css/main.css';
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container-fluid">
+        <div className="container-fluid no-pad">
 
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link to="/" className="navbar-brand">
