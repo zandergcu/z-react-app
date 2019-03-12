@@ -75,49 +75,49 @@ export default class CakeList extends Component {
         <div className="flex-center cakes">
           <a href="#">
             <div className="cake">
-              <img src="" alt="cake"/>
+              <img src="https://via.placeholder.com/50" alt="cake"/>
               <label>Name</label>
             </div>
           </a>
           <a href="#">
             <div className="cake">
-              <img src="" alt="cake"/>
+              <img src="https://via.placeholder.com/50" alt="cake"/>
               <label>Name</label>
             </div>
           </a>
           <a href="#">
             <div className="cake">
-              <img src="" alt="cake"/>
+              <img src="https://via.placeholder.com/50" alt="cake"/>
               <label>Name</label>
             </div>
           </a>
           <a href="#">
             <div className="cake">
-              <img src="" alt="cake"/>
+              <img src="https://via.placeholder.com/50" alt="cake"/>
               <label>Name</label>
             </div>
           </a>
           <a href="#">
             <div className="cake">
-              <img src="" alt="cake"/>
+              <img src="https://via.placeholder.com/50" alt="cake"/>
               <label>Name</label>
             </div>
           </a>
           <a href="#">
             <div className="cake">
-              <img src="" alt="cake"/>
+              <img src="https://via.placeholder.com/50" alt="cake"/>
               <label>Name</label>
             </div>
           </a>
           <a href="#">
             <div className="cake">
-              <img src="" alt="cake"/>
+              <img src="https://via.placeholder.com/50" alt="cake"/>
               <label>Name</label>
             </div>
           </a>
           <a href="#">
             <div className="cake">
-              <img src="" alt="cake"/>
+              <img src="https://via.placeholder.com/50" alt="cake"/>
               <label>Name</label>
             </div>
           </a>
