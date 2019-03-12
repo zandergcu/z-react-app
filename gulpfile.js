@@ -23,7 +23,3 @@ function css() {
 
 exports.css = css;
 exports.default = parallel(css);
-
-//- RUN NPM INSTALL GULP SAVE
-//- POSSIBLY NEED TO RUN YARN INSTALL AGAIN THEN
-//- HOPEFULLY THIS LETS SCSS WORK AND DEPLOYS FINE
