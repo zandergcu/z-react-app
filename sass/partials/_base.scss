@@ -103,9 +103,10 @@ h1{
   padding-bottom:40px;
 }
 h2{
-  font-size:$font-size--large;
-  padding-top:40px;
-  padding-bottom:40px;
+  font-size:$font-size--medium;
+  font-weight: $font_weight--regular;
+  padding-top:10px;
+  padding-bottom:20px;
 }
 h3{
   font-size:$font-size--medium;
@@ -118,4 +119,26 @@ p{
 
 .no-pad{
   padding:0;
+}
+
+.form-group{
+  label{
+    font-weight:$font_weight--bold;
+  }
+  input{
+    padding: 5px;
+    border: 2px solid darken($content_background--dark, 25%);
+    border-radius:5px;
+    width:100%;
+  }
+}
+
+button{
+  padding:10px 35px;
+  display:block;
+  margin:0 auto;
+  background-color: #f94d6b;
+  font-weight:$font_weight--bold;
+  color:white;
+  border-radius:5px;
 }

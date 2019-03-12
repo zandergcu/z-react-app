@@ -9,7 +9,7 @@ export default class CakeList extends Component {
     this.onChangeCakeName = this.onChangeCakeName.bind(this);
     this.onChangeCakeComment = this.onChangeCakeComment.bind(this);
     this.onChangeCakeImageUrl = this.onChangeCakeImageUrl.bind(this);
-    this.onChangeCakeYumFactor = this.onChangeCakeyYumFactor.bind(this);
+    this.onChangeCakeYumFactor = this.onChangeCakeYumFactor.bind(this);
     this.onSubmitAddCake = this.onSubmitAddCake.bind(this);
 
     this.state = {
@@ -71,6 +71,59 @@ export default class CakeList extends Component {
     return (
       <div>
         <p>Cake List Component</p>
+
+        <div className="flex-center cakes">
+          <a href="#">
+            <div className="cake">
+              <img src="" alt="cake"/>
+              <label>Name</label>
+            </div>
+          </a>
+          <a href="#">
+            <div className="cake">
+              <img src="" alt="cake"/>
+              <label>Name</label>
+            </div>
+          </a>
+          <a href="#">
+            <div className="cake">
+              <img src="" alt="cake"/>
+              <label>Name</label>
+            </div>
+          </a>
+          <a href="#">
+            <div className="cake">
+              <img src="" alt="cake"/>
+              <label>Name</label>
+            </div>
+          </a>
+          <a href="#">
+            <div className="cake">
+              <img src="" alt="cake"/>
+              <label>Name</label>
+            </div>
+          </a>
+          <a href="#">
+            <div className="cake">
+              <img src="" alt="cake"/>
+              <label>Name</label>
+            </div>
+          </a>
+          <a href="#">
+            <div className="cake">
+              <img src="" alt="cake"/>
+              <label>Name</label>
+            </div>
+          </a>
+          <a href="#">
+            <div className="cake">
+              <img src="" alt="cake"/>
+              <label>Name</label>
+            </div>
+          </a>
+
+        </div>
+
         <div className="sidePanelContainer">
 
           <div className="sidePanelButton">
@@ -78,14 +131,27 @@ export default class CakeList extends Component {
           </div>
 
           <div className="sidePanelContent">
+            <h2>Add Cake</h2>
             <form onSubmit="this.onSubmitAddCake">
               <div className="form-group">
-                <label>1:</label>
-                <input type="text" placeholder="1"/>
+                <label>Cake Name:</label>
+                <input type="text" placeholder="Enter cake name"/>
               </div>
+              <div className="form-group">
+                <label>Cake Comment:</label>
+                <input type="text" placeholder="Enter cake comment"/>
+              </div>
+              <div className="form-group">
+                <label>Cake Image URL:</label>
+                <input type="text" placeholder="Enter image url"/>
+              </div>
+              <div className="form-group">
+                <label>Cake Yum Factor (1-5):</label>
+                <input type="text" placeholder="Enter cake yum factor"/>
+              </div>
+              <button>Submit</button>
             </form>
           </div>
-
         </div>
       </div>
     )

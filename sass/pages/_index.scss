@@ -1,0 +1,74 @@
+
+.cake{
+  width:200px;
+  height:200px;
+  background-color:white;
+  border:2px solid darken($content_background--dark, 25%);
+  border-radius:5px;
+  display:inline-flex;
+  margin:20px;
+  img{
+    pointer-events: none;
+  }
+  label{
+    pointer-events: none;
+    color:$base_color--black;
+  }
+}
+.cakes{
+  max-width:1000px;
+  overflow-x:hidden;
+  margin:0 auto;
+  flex-wrap: wrap;
+  a:hover{
+    text-decoration: none;
+  }
+}
+
+.sidePanelContainer{
+  width:300px;
+  position:absolute;
+  top:100px;
+  right:0;
+  .sidePanelButton{
+    width:60px;
+    height:60px;
+    display:inline-block;
+    position: relative;
+    left: 2px;
+    background-color:$content_background--dark;
+    border: 2px solid darken($content_background--dark, 25%);
+    border-right: 0;
+    z-index: 5;
+    cursor: pointer;
+    label{
+      width:100%;
+      padding-top:30px;
+      color: $base_color--black;
+      text-align: center;
+      font-weight: $font_weight--bold;
+      font-size: $font-size--small;
+      pointer-events: none;
+    }
+    &:before{
+      content: url('/img/cake.svg');
+      height:18px;
+      width:18px;
+      display:block;
+      position:absolute;
+      top:5px;
+      left:50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+  }
+  .sidePanelContent{
+    width:calc(100% - 60px);
+    height: 500px;
+    display:inline-block;
+    position: absolute;
+    padding:15px;
+    background-color:$content_background--dark;
+    border: 2px solid darken($content_background--dark, 25%);
+  }
+}
