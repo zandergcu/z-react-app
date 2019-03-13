@@ -14,7 +14,7 @@ export default class ReviewCake extends Component {
     this.state = {
       cake_name: '',
       cake_comment: '',
-      cake_yumFactor: 1
+      cake_yumFactor: 0
     }
   }
 
@@ -32,9 +32,11 @@ export default class ReviewCake extends Component {
   }
   // Add Cake Part 3 - Capture Cake Yum Factor
   onChangeReviewCakeYumFactor(e) {
+    console.log(e.target.value);
     this.setState({
       cake_yumFactor: e.target.value
     });
+    console.log(this.cake_yumFactor); // need to work out why this is undefined
   }
 
   // Add Cake Part 6 - Form Submit Logic
@@ -63,26 +65,26 @@ export default class ReviewCake extends Component {
         <form className="review-form" onSubmit={this.onSubmitReviewCake}>
           <div className="form-group">
             <label>Cake Name:</label>
-            <input type="text" placeholder="Enter cake name"/>
+            <input type="text" placeholder="Enter cake name" value={this.state.cake_name} onChange={this.onChangeReviewCakeName}/>
           </div>
           <div className="form-group">
             <label>Cake Comment:</label>
-            <input type="text" placeholder="Enter cake comment"/>
+            <input type="text" placeholder="Enter cake comment" value={this.state.cake_comment} onChange={this.onChangeReviewCakeComment}/>
           </div>
           <div className="form-group">
             <label className="yumfactor-title">Yum Factor:</label>
-            <input id="yum1" type="checkbox" name="yumFactor" onChange={this.onChangeReviewCakeYumFactor} checked={this.cake_yumFactor===1}/>
-            <label htmlFor="yum1"></label>
-            <input id="yum2" type="checkbox" name="yumFactor" onChange={this.onChangeReviewCakeYumFactor} checked={this.cake_yumFactor===2}/>
-            <label htmlFor="yum2"></label>
-            <input id="yum3" type="checkbox" name="yumFactor" onChange={this.onChangeReviewCakeYumFactor} checked={this.cake_yumFactor===3}/>
-            <label htmlFor="yum3"></label>
-            <input id="yum4" type="checkbox" name="yumFactor" onChange={this.onChangeReviewCakeYumFactor} checked={this.cake_yumFactor===4}/>
-            <label htmlFor="yum4"></label>
-            <input id="yum5" type="checkbox" name="yumFactor" onChange={this.onChangeReviewCakeYumFactor} checked={this.cake_yumFactor===5}/>
-            <label htmlFor="yum5"></label>
+            <input id="yum1" type="checkbox" name="yumFactor" value="1" onChange={this.onChangeReviewCakeYumFactor}/>
+            <label htmlFor={'yum1'}></label>
+            <input id="yum2" type="checkbox" name="yumFactor" value="2" onChange={this.onChangeReviewCakeYumFactor}/>
+            <label htmlFor={'yum2'}></label>
+            <input id="yum3" type="checkbox" name="yumFactor" value="3" onChange={this.onChangeReviewCakeYumFactor}/>
+            <label htmlFor={'yum3'}></label>
+            <input id="yum4" type="checkbox" name="yumFactor" value="4" onChange={this.onChangeReviewCakeYumFactor}/>
+            <label htmlFor={'yum4'}></label>
+            <input id="yum5" type="checkbox" name="yumFactor" value="5" onChange={this.onChangeReviewCakeYumFactor}/>
+            <label htmlFor={'yum5'}></label>
           </div>
-          <button>Submit</button>
+          <input type="submit" value="Submit"/>
         </form>
       </div>
     )

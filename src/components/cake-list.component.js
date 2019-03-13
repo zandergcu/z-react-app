@@ -132,7 +132,7 @@ export default class CakeList extends Component {
 
           <div className="sidePanelContent">
             <h2>Add a Cake</h2>
-            <form onSubmit="this.onSubmitAddCake">
+            <form onSubmit={this.onSubmitAddCake}>
               <div className="form-group">
                 <label>Cake Name:</label>
                 <input type="text" placeholder="Enter cake name" value={this.state.cake_name} onChange={this.onChangeCakeName}/>
@@ -149,7 +149,7 @@ export default class CakeList extends Component {
                 <label>Cake Yum Factor (1-5):</label>
                 <input type="text" placeholder="Enter cake yum factor" value={this.state.cake_yumFactor} onChange={this.onChangeCakeYumFactor}/>
               </div>
-              <button>Submit</button>
+              <input type="submit" value="Submit"/>
             </form>
           </div>
         </div>
