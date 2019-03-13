@@ -4,7 +4,7 @@ export default class ViewCake extends Component {
   render() {
     return (
       <div>
-        <p>View Cake Component</p>
+        <h1>View Cake</h1>
       </div>
     )
   }

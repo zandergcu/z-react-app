@@ -99,7 +99,7 @@ h1, h2, h3, p{
 }
 h1{
   font-size:$font-size--large;
-  padding-top:70px;
+  padding-top:40px;
   padding-bottom:40px;
 }
 h2{
@@ -141,4 +141,21 @@ button{
   font-weight:$font_weight--bold;
   color:white;
   border-radius:5px;
+}
+
+input[type="checkbox"]{
+  display:none;
+  &+label{
+    width:45px;
+    height:45px;
+    display: inline-block;
+    margin-right:5px;
+    background-color:white;
+    border:2px solid darken($content_background--dark, 25%);
+    border-radius:50%;
+    cursor: pointer;
+  }
+  &:checked + label{
+    background-color:pink;
+  }
 }

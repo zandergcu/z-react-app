@@ -32,8 +32,6 @@ class App extends Component {
             </div>
           </nav>
 
-          <h2>Zander React App</h2>
-
           <Route path="/" exact component={CakeList} />
           <Route path="/view/:id" exact component={ViewCake} />
           <Route path="/review" exact component={ReviewCake} />

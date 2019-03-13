@@ -17,7 +17,7 @@ export default class CakeList extends Component {
       cake_name: '',
       cake_comment: '',
       cake_imageUrl: '',
-      cake_yumFactor: 1
+      cake_yumFactor: 0
     }
   }
 
@@ -62,7 +62,7 @@ export default class CakeList extends Component {
       cake_name: '',
       cake_comment: '',
       cake_imageUrl: '',
-      cake_yumFactor: 1
+      cake_yumFactor: 0
     });
 
   }
@@ -70,7 +70,7 @@ export default class CakeList extends Component {
   render() {
     return (
       <div>
-        <p>Cake List Component</p>
+        <h1>View All Cakes</h1>
 
         <div className="flex-center cakes">
           <a href="#">
@@ -131,23 +131,23 @@ export default class CakeList extends Component {
           </div>
 
           <div className="sidePanelContent">
-            <h2>Add Cake</h2>
+            <h2>Add a Cake</h2>
             <form onSubmit="this.onSubmitAddCake">
               <div className="form-group">
                 <label>Cake Name:</label>
-                <input type="text" placeholder="Enter cake name"/>
+                <input type="text" placeholder="Enter cake name" value={this.state.cake_name} onChange={this.onChangeCakeName}/>
               </div>
               <div className="form-group">
                 <label>Cake Comment:</label>
-                <input type="text" placeholder="Enter cake comment"/>
+                <input type="text" placeholder="Enter cake comment" value={this.state.cake_comment} onChange={this.onChangeCakeComment}/>
               </div>
               <div className="form-group">
                 <label>Cake Image URL:</label>
-                <input type="text" placeholder="Enter image url"/>
+                <input type="text" placeholder="Enter image url" value={this.state.cake_imageUrl} onChange={this.onChangeCakeImageUrl}/>
               </div>
               <div className="form-group">
                 <label>Cake Yum Factor (1-5):</label>
-                <input type="text" placeholder="Enter cake yum factor"/>
+                <input type="text" placeholder="Enter cake yum factor" value={this.state.cake_yumFactor} onChange={this.onChangeCakeYumFactor}/>
               </div>
               <button>Submit</button>
             </form>
