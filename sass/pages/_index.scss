@@ -1,4 +1,26 @@
 
+.cakes{
+  max-width:320px;
+  overflow-x:hidden;
+  margin:0 auto;
+  flex-wrap: wrap;
+  @media screen and (min-width:576px){
+    max-width:500px;
+  }
+  @media screen and (min-width:767px){
+    max-width: 700px;
+  }
+  @media screen and (min-width:992px){
+    max-width: 900px;
+  }
+  @media screen and (min-width:1200px){
+    max-width:1000px;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+}
+
 .cake{
   width:200px;
   height:200px;
@@ -26,15 +48,6 @@
     transform: translateX(-50%);
     pointer-events: none;
     color:$base_color--black;
-  }
-}
-.cakes{
-  max-width:1000px;
-  overflow-x:hidden;
-  margin:0 auto;
-  flex-wrap: wrap;
-  a:hover{
-    text-decoration: none;
   }
 }
 
