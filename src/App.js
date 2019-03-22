@@ -5,6 +5,9 @@ import CakeList from "./components/cake-list.component";
 import ViewCake from "./components/view-cake.component";
 import ReviewCake from "./components/review-cake.component";
 import './css/main.css';
+// import './js/jquery.min.js';
+import 'bootstrap/dist/js/bootstrap.min.js';
+// import './js/scripts.js';
 
 class App extends Component {
   render() {

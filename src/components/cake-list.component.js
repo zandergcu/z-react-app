@@ -5,7 +5,7 @@ export default class CakeList extends Component {
   constructor(props) {
 
     super(props);
-
+    this.toggleOpen = this.toggleOpen.bind(this);
     this.onChangeCakeName = this.onChangeCakeName.bind(this);
     this.onChangeCakeComment = this.onChangeCakeComment.bind(this);
     this.onChangeCakeImageUrl = this.onChangeCakeImageUrl.bind(this);
@@ -13,13 +13,21 @@ export default class CakeList extends Component {
     this.onSubmitAddCake = this.onSubmitAddCake.bind(this);
 
     this.state = {
+      active: false,
       cake_id: '',
       cake_name: '',
       cake_comment: '',
       cake_imageUrl: '',
       cake_yumFactor: 0
-    }
+    };
   }
+
+  toggleOpen() {
+      console.log("toggle");
+      let currentState = this.state.active;
+      console.log(currentState);
+      this.setState({ active: !currentState });
+  };
 
   // Add Cake Part 1 - Capture Cake Name
   onChangeCakeName(e) {
@@ -124,9 +132,9 @@ export default class CakeList extends Component {
 
         </div>
 
-        <div className="sidePanelContainer">
+        <div className={"sidePanelContainer" + this.state.active ? "sidePanelContainer open": ""}>
 
-          <div className="sidePanelButton">
+          <div className="sidePanelButton" onClick={this.toggleOpen}>
             <label>Add</label>
           </div>
 
