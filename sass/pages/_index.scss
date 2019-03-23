@@ -56,6 +56,11 @@
   position:absolute;
   top:100px;
   right:0;
+  transform:translateX(240px);
+  transition: transform .5s 0s ease-in-out;
+  &.open{
+    transform:translateX(0px);
+  }
   .sidePanelButton{
     width:60px;
     height:60px;

@@ -85,6 +85,7 @@ $font-size--large: 22px;
 
 body{
   background-color: $body_background;
+  overflow-x:hidden;
 }
 
 .flex-center{

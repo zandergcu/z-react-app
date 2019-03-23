@@ -132,7 +132,7 @@ export default class CakeList extends Component {
 
         </div>
 
-        <div className={"sidePanelContainer" + this.state.active ? "sidePanelContainer open": ""}>
+        <div className={this.state.active ? "sidePanelContainer open": 'sidePanelContainer'}>
 
           <div className="sidePanelButton" onClick={this.toggleOpen}>
             <label>Add</label>
