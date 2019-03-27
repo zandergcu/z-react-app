@@ -8,18 +8,19 @@ export default class ViewCake extends Component {
     super(props);
 
     this.state = {
-      cakes: []
+      cakeinfo: []
     };
   }
 
-  // TODO: WHEN USER PASSED TO THIS PAGE WITH URL /CAKES/ID - NEED TO USE THIS ID IMMEDIATELY TO PULL IN THAT CAKES DATA
-
   componentDidMount() {
-    axios.get(`http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes`)
+    var cake_id = document.location.pathname.split("/")[2];
+    var url = 'http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes/' + cake_id;
+    axios.get(url)
       .then(res => {
         console.log(res.data);
-        const cakes = res.data;
-        this.setState({ cakes });
+        const cakeinfo = res.data;
+        this.setState({ cakeinfo });
+        console.log(cakeinfo)
       })
   }
 
@@ -28,14 +29,13 @@ export default class ViewCake extends Component {
       <div>
         <h1>View Cake</h1>
         <div className="cake-box">
-          <h2>Cake Name</h2>
-          <img src="" alt=""/>
-          <p>This is the cake comment</p>
-          <p>4/5 Yummy Rating!</p>
+          <h2>{this.state.cakeinfo.name}</h2>
+          <img src={this.state.cakeinfo.imageUrl} alt={this.state.cakeinfo.name}/>
+          <p className="comment">&ldquo;{this.state.cakeinfo.comment}&rdquo;</p>
+          <p className="rating"><strong>{this.state.cakeinfo.yumFactor}/5</strong> Yummy Rating!</p>
           <a className="button go-back" href="/">Go Back</a>
         </div>
       </div>
     )
   }
-
 }

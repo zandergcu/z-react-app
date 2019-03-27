@@ -30,6 +30,7 @@ export default class CakeList extends Component {
         console.log(res.data);
         const cakes = res.data;
         this.setState({ cakes });
+        console.log(cakes);
       })
   }
 
@@ -74,18 +75,15 @@ export default class CakeList extends Component {
     console.log(`Cake Comment: ${this.state.cake_comment}`);
     console.log(`Cake Image Url: ${this.state.cake_imageUrl}`);
     console.log(`Cake Yum Factor: ${this.state.cake_yumFactor}`);
+    var random_id = Math.round(Math.random() * 10000);
 
-    const newCake = {
-      // Bad Request?? Tried messing around with ID etc. but will come back to this post
-      // Will need to re-run the Get Request after the post to show updated list
-      id: "5c802de31f279800018f3bc9",
+    axios.post(`http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes`, {
+      id: random_id,
       name: this.state.cake_name,
       comment: this.state.cake_comment,
       imageUrl: this.state.cake_imageUrl,
       yumFactor: this.state.cake_yumFactor
-    };
-
-    axios.post(`http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes`, { newCake })
+     })
       .then(res => {
         console.log(res);
         console.log(res.data);

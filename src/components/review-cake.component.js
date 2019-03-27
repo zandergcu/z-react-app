@@ -10,6 +10,7 @@ export default class ReviewCake extends Component {
     this.onChangeReviewCakeComment = this.onChangeReviewCakeComment.bind(this);
     this.onChangeReviewCakeYumFactor = this.onChangeReviewCakeYumFactor.bind(this);
     this.onSubmitReviewCake = this.onSubmitReviewCake.bind(this);
+    this.sortChecks = this.sortChecks.bind(this);
 
     this.state = {
       cake_name: '',
@@ -31,6 +32,49 @@ export default class ReviewCake extends Component {
     });
   }
 
+  sortChecks(x) {
+    // uncheck all check boxes - works fine just now because how simple component is
+    var checkboxes = new Array();
+    checkboxes = document.getElementsByTagName('input');
+    for (var i=0; i<checkboxes.length; i++){
+      if (checkboxes[i].type == 'checkbox'){
+        checkboxes[i].checked = false;
+      }
+    }
+    switch (x) {
+      case "0":
+        break;
+      case "1":
+        document.getElementById("yum1").checked = true;
+        break;
+      case "2":
+        document.getElementById("yum1").checked = true;
+        document.getElementById("yum2").checked = true;
+        break;
+      case "3":
+        document.getElementById("yum1").checked = true;
+        document.getElementById("yum2").checked = true;
+        document.getElementById("yum3").checked = true;
+        break;
+      case "4":
+        document.getElementById("yum1").checked = true;
+        document.getElementById("yum2").checked = true;
+        document.getElementById("yum3").checked = true;
+        document.getElementById("yum4").checked = true;
+        break;
+      case "5":
+        document.getElementById("yum1").checked = true;
+        document.getElementById("yum2").checked = true;
+        document.getElementById("yum3").checked = true;
+        document.getElementById("yum4").checked = true;
+        document.getElementById("yum5").checked = true;
+        console.log("hit5");
+        break;
+      default:
+        console.log("error")
+    }
+  }
+
   // Add Cake Part 3 - Capture Cake Yum Factor
   onChangeReviewCakeYumFactor(e) {
     let previousValue = this.state.cake_yumFactor;
@@ -42,8 +86,7 @@ export default class ReviewCake extends Component {
     });
     let selectedCheck = document.getElementById("yum" + selectedValue);
     console.log("Part 3 - New Yum Factor: " + this.state.cake_yumFactor); // TODO: need to work out why this is always one behind
-    console.log(selectedCheck);
-    // sortChecks(selectedValue);
+    this.sortChecks(selectedValue);
   }
 
   // Add Cake Part 6 - Form Submit Logic
