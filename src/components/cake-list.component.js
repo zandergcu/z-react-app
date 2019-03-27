@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 export default class CakeList extends Component {
 
@@ -14,12 +15,22 @@ export default class CakeList extends Component {
 
     this.state = {
       active: false,
+      cakes: [],
       cake_id: '',
       cake_name: '',
       cake_comment: '',
       cake_imageUrl: '',
       cake_yumFactor: 0
     };
+  }
+
+  componentDidMount() {
+    axios.get(`http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes`)
+      .then(res => {
+        console.log(res.data);
+        const cakes = res.data;
+        this.setState({ cakes });
+      })
   }
 
   toggleOpen() {
@@ -64,6 +75,23 @@ export default class CakeList extends Component {
     console.log(`Cake Image Url: ${this.state.cake_imageUrl}`);
     console.log(`Cake Yum Factor: ${this.state.cake_yumFactor}`);
 
+    const newCake = {
+      // Bad Request?? Tried messing around with ID etc. but will come back to this post
+      // Will need to re-run the Get Request after the post to show updated list
+      id: "5c802de31f279800018f3bc9",
+      name: this.state.cake_name,
+      comment: this.state.cake_comment,
+      imageUrl: this.state.cake_imageUrl,
+      yumFactor: this.state.cake_yumFactor
+    };
+
+    axios.post(`http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes`, { newCake })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      }
+    )
+
     // Reset state after cake added
     this.setState({
       cake_id: '',
@@ -81,55 +109,14 @@ export default class CakeList extends Component {
         <h1>View All Cakes</h1>
 
         <div className="flex-center cakes">
-          <a href="#">
-            <div className="cake">
-              <img src="https://via.placeholder.com/50" alt="cake"/>
-              <label>Name</label>
-            </div>
-          </a>
-          <a href="#">
-            <div className="cake">
-              <img src="https://via.placeholder.com/50" alt="cake"/>
-              <label>Name</label>
-            </div>
-          </a>
-          <a href="#">
-            <div className="cake">
-              <img src="https://via.placeholder.com/50" alt="cake"/>
-              <label>Name</label>
-            </div>
-          </a>
-          <a href="#">
-            <div className="cake">
-              <img src="https://via.placeholder.com/50" alt="cake"/>
-              <label>Name</label>
-            </div>
-          </a>
-          <a href="#">
-            <div className="cake">
-              <img src="https://via.placeholder.com/50" alt="cake"/>
-              <label>Name</label>
-            </div>
-          </a>
-          <a href="#">
-            <div className="cake">
-              <img src="https://via.placeholder.com/50" alt="cake"/>
-              <label>Name</label>
-            </div>
-          </a>
-          <a href="#">
-            <div className="cake">
-              <img src="https://via.placeholder.com/50" alt="cake"/>
-              <label>Name</label>
-            </div>
-          </a>
-          <a href="#">
-            <div className="cake">
-              <img src="https://via.placeholder.com/50" alt="cake"/>
-              <label>Name</label>
-            </div>
-          </a>
-
+          { this.state.cakes.map(cake =>
+            <a href={"/view/" + cake.id}>
+              <div className="cake">
+                <img src={cake.imageUrl} alt="cake"/>
+                <label>{cake.name}</label>
+              </div>
+            </a>
+          )}
         </div>
 
         <div className={this.state.active ? "sidePanelContainer open": 'sidePanelContainer'}>

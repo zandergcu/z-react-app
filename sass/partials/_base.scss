@@ -134,7 +134,7 @@ p{
   }
 }
 
-input[type="submit"]{
+input[type="submit"], a.button{
   padding:10px 35px;
   display:block;
   margin:0 auto;
@@ -142,6 +142,10 @@ input[type="submit"]{
   font-weight:$font_weight--bold;
   color:white;
   border-radius:5px;
+  &.go-back{
+    max-width:130px;
+    margin-top:30px;
+  }
 }
 
 input[type="checkbox"]{

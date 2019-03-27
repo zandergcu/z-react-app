@@ -1,6 +1,3 @@
-$( document ).ready(function() {
-  console.log("JQuery Working");
-});
 
 function sortChecks(x) {
   const yumCheck = document.getElementByName("yumFactor");
@@ -30,7 +27,3 @@ function sortChecks(x) {
       break;
   }
 }
-
-
-
-// Do I need to export here in order to use the functions inside components
