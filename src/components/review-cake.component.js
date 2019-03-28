@@ -49,7 +49,6 @@ export default class ReviewCake extends Component {
     this.setState({
       cake_yumFactor: selectedValue
     });
-    let selectedCheck = document.getElementById("yum" + selectedValue);
     this.checkUncheck(5, false);
     this.checkUncheck(selectedValue, true);
   }

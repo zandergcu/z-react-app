@@ -52,7 +52,7 @@
 }
 
 .sidePanelContainer{
-  width:300px;
+  width:310px;
   position:absolute;
   top:100px;
   right:0;
@@ -62,8 +62,8 @@
     transform:translateX(0px);
   }
   .sidePanelButton{
-    width:60px;
-    height:60px;
+    width:70px;
+    height:70px;
     display:inline-block;
     position: relative;
     left: 2px;
@@ -74,7 +74,7 @@
     cursor: pointer;
     label{
       width:100%;
-      padding-top:30px;
+      padding-top:40px;
       color: $base_color--black;
       text-align: center;
       font-weight: $font_weight--bold;
@@ -82,9 +82,9 @@
       pointer-events: none;
     }
     &:before{
-      content: url('/img/cake.svg');
-      height:18px;
-      width:18px;
+      content: url('/img/cake-add.svg');
+      height:40px;
+      width:40px;
       display:block;
       position:absolute;
       top:5px;
