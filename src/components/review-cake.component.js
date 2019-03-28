@@ -11,7 +11,7 @@ export default class ReviewCake extends Component {
     this.onChangeReviewCakeComment = this.onChangeReviewCakeComment.bind(this);
     this.onChangeReviewCakeYumFactor = this.onChangeReviewCakeYumFactor.bind(this);
     this.onSubmitReviewCake = this.onSubmitReviewCake.bind(this);
-    this.sortChecks = this.sortChecks.bind(this);
+    this.checkUncheck = this.checkUncheck.bind(this);
 
     this.state = {
       cakes: [],
@@ -34,47 +34,10 @@ export default class ReviewCake extends Component {
     });
   }
 
-  sortChecks(x) {
-    // Uncheck all check boxes on review page
-    var checkboxes = new Array();
-    checkboxes = document.getElementsByTagName('input');
-    for (var i=0; i<checkboxes.length; i++){
-      if (checkboxes[i].type == 'checkbox'){
-        checkboxes[i].checked = false;
-      }
-    }
-    // Check previous checks aswell as chosen one
-    switch (x) {
-      case "0":
-        break;
-      case "1":
-        document.getElementById("yum1").checked = true;
-        break;
-      case "2":
-        document.getElementById("yum1").checked = true;
-        document.getElementById("yum2").checked = true;
-        break;
-      case "3":
-        document.getElementById("yum1").checked = true;
-        document.getElementById("yum2").checked = true;
-        document.getElementById("yum3").checked = true;
-        break;
-      case "4":
-        document.getElementById("yum1").checked = true;
-        document.getElementById("yum2").checked = true;
-        document.getElementById("yum3").checked = true;
-        document.getElementById("yum4").checked = true;
-        break;
-      case "5":
-        document.getElementById("yum1").checked = true;
-        document.getElementById("yum2").checked = true;
-        document.getElementById("yum3").checked = true;
-        document.getElementById("yum4").checked = true;
-        document.getElementById("yum5").checked = true;
-        console.log("hit5");
-        break;
-      default:
-        console.log("error")
+  checkUncheck(valueChosen, condition) {
+    for(var i = valueChosen; i > 0; i--){
+      var thisI = "yum" + i;
+      document.getElementById(thisI).checked = condition;
     }
   }
 
@@ -86,7 +49,8 @@ export default class ReviewCake extends Component {
       cake_yumFactor: selectedValue
     });
     let selectedCheck = document.getElementById("yum" + selectedValue);
-    this.sortChecks(selectedValue);
+    this.checkUncheck(5, false);
+    this.checkUncheck(selectedValue, true);
   }
 
   // Add Cake Part 6 - Form Submit Logic
@@ -130,11 +94,7 @@ export default class ReviewCake extends Component {
               y = null;
               cakeImageUrl = null;
               z = 0;
-              document.getElementById("yum1").checked = false;
-              document.getElementById("yum2").checked = false;
-              document.getElementById("yum3").checked = false;
-              document.getElementById("yum4").checked = false;
-              document.getElementById("yum5").checked = false;
+              this.checkUncheck(5, false);
             }
           )
         // If cake null then display error message
@@ -149,7 +109,6 @@ export default class ReviewCake extends Component {
       cake_comment: '',
       cake_yumFactor: 0
     });
-
   }
 
   render() {
