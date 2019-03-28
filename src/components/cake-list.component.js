@@ -86,6 +86,12 @@ export default class CakeList extends Component {
      })
       .then(res => {
         console.log(res.data);
+        // Do another Get Request to show new cake in the data immediately
+        axios.get(`http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes`)
+          .then(res => {
+            const cakes = res.data;
+            this.setState({ cakes });
+          })
       }
     )
 
