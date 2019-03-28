@@ -34,6 +34,7 @@ export default class ReviewCake extends Component {
     });
   }
 
+  // Check or uncheck the 1-5 review checkboxes #yum1, #yum2 etc.
   checkUncheck(valueChosen, condition) {
     for(var i = valueChosen; i > 0; i--){
       var thisI = "yum" + i;
@@ -57,9 +58,9 @@ export default class ReviewCake extends Component {
   onSubmitReviewCake(e) {
     e.preventDefault();
 
-    var x = this.state.cake_name;
-    var y = this.state.cake_comment;
-    var z = this.state.cake_yumFactor;
+    var enteredName  = this.state.cake_name;
+    var enteredComment = this.state.cake_comment;
+    var enteredRating = this.state.cake_yumFactor;
 
     // Get list of cakes
     axios.get(`http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes`)
@@ -70,7 +71,7 @@ export default class ReviewCake extends Component {
         // Loop over all cakes and check if there is a matching name
         for (var i=0;i<this.state.cakes.length;i++){
           // If there is a matching name store it's ID so we can use it in Put Request
-          if(x === cakes[i].name){
+          if(enteredName === cakes[i].name){
             var cakeId = cakes[i].id;
             var cakeName = cakes[i].name;
             var cakeImageUrl = cakes[i].imageUrl;
@@ -83,17 +84,18 @@ export default class ReviewCake extends Component {
           axios.put(url, {
             id: cakeId,
             name: cakeName,
-            comment: y,
+            comment: enteredComment,
             imageUrl: cakeImageUrl,
-            yumFactor: z
+            yumFactor: enteredRating
            })
             .then(res => {
               console.log("success");
+              // Reset values
               cakeId = null;
               cakeName = null;
-              y = null;
+              enteredComment = null;
               cakeImageUrl = null;
-              z = 0;
+              enteredRating = 0;
               this.checkUncheck(5, false);
             }
           )
