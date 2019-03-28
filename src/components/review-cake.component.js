@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 export default class ReviewCake extends Component {
 
@@ -13,6 +14,7 @@ export default class ReviewCake extends Component {
     this.sortChecks = this.sortChecks.bind(this);
 
     this.state = {
+      cakes: [],
       cake_name: '',
       cake_comment: '',
       cake_yumFactor: 0
@@ -33,7 +35,7 @@ export default class ReviewCake extends Component {
   }
 
   sortChecks(x) {
-    // uncheck all check boxes - works fine just now because how simple component is
+    // Uncheck all check boxes on review page
     var checkboxes = new Array();
     checkboxes = document.getElementsByTagName('input');
     for (var i=0; i<checkboxes.length; i++){
@@ -41,6 +43,7 @@ export default class ReviewCake extends Component {
         checkboxes[i].checked = false;
       }
     }
+    // Check previous checks aswell as chosen one
     switch (x) {
       case "0":
         break;
@@ -79,13 +82,10 @@ export default class ReviewCake extends Component {
   onChangeReviewCakeYumFactor(e) {
     let previousValue = this.state.cake_yumFactor;
     let selectedValue = e.target.value;
-    console.log("Part 1 - Previous Value: " + previousValue);
-    console.log("Part 2 - Selected Value: " + selectedValue);
     this.setState({
       cake_yumFactor: selectedValue
     });
     let selectedCheck = document.getElementById("yum" + selectedValue);
-    console.log("Part 3 - New Yum Factor: " + this.state.cake_yumFactor); // TODO: need to work out why this is always one behind
     this.sortChecks(selectedValue);
   }
 
@@ -93,10 +93,55 @@ export default class ReviewCake extends Component {
   onSubmitReviewCake(e) {
     e.preventDefault();
 
-    console.log(`Form submitted:`);
-    console.log(`Cake Name: ${this.state.cake_name}`);
-    console.log(`Cake Comment: ${this.state.cake_comment}`);
-    console.log(`Cake Yum Factor: ${this.state.cake_yumFactor}`);
+    var x = this.state.cake_name;
+    var y = this.state.cake_comment;
+    var z = this.state.cake_yumFactor;
+
+    // Get list of cakes
+    axios.get(`http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes`)
+      .then(res => {
+        console.log(res.data);
+        const cakes = res.data;
+        this.setState({ cakes });
+        // Loop over all cakes and check if there is a matching name
+        for (var i=0;i<this.state.cakes.length;i++){
+          // If there is a matching name store it's ID so we can use it in Put Request
+          if(x === cakes[i].name){
+            var cakeId = cakes[i].id;
+            var cakeName = cakes[i].name;
+            var cakeImageUrl = cakes[i].imageUrl;
+          }
+        }
+        // If cakeId not null then do Put Request
+        if(cakeId != null){
+          console.log("yay");
+          var url = "http://ec2-34-243-153-154.eu-west-1.compute.amazonaws.com:5000/api/cakes/" + cakeId;
+          axios.put(url, {
+            id: cakeId,
+            name: cakeName,
+            comment: y,
+            imageUrl: cakeImageUrl,
+            yumFactor: z
+           })
+            .then(res => {
+              console.log("success");
+              cakeId = null;
+              cakeName = null;
+              y = null;
+              cakeImageUrl = null;
+              z = 0;
+              document.getElementById("yum1").checked = false;
+              document.getElementById("yum2").checked = false;
+              document.getElementById("yum3").checked = false;
+              document.getElementById("yum4").checked = false;
+              document.getElementById("yum5").checked = false;
+            }
+          )
+        // If cake null then display error message
+        } else {
+          console.log("Cake to Edit not set");
+        }
+      })
 
     // Reset state after cake added
     this.setState({
@@ -104,6 +149,7 @@ export default class ReviewCake extends Component {
       cake_comment: '',
       cake_yumFactor: 0
     });
+
   }
 
   render() {

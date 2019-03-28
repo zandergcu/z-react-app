@@ -85,7 +85,6 @@ export default class CakeList extends Component {
       yumFactor: this.state.cake_yumFactor
      })
       .then(res => {
-        console.log(res);
         console.log(res.data);
       }
     )
